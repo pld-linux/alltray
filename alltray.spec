@@ -27,6 +27,10 @@ XFCE 4, Fluxboxem i WindowMakerem.
 %patch0 -p1
 
 %build
+%{__aclocal}
+%{__automake}
+%{__autoconf}
+%{__automake}
 %configure
 
 %install
@@ -35,7 +39,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
-rm -fr %{_builddir}/%{name}-%{version}
 
 %files
 %defattr(644,root,root,755)
