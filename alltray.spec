@@ -30,7 +30,6 @@ XFCE 4, Fluxboxem i WindowMakerem.
 %{__aclocal}
 %{__automake}
 %{__autoconf}
-%{__automake}
 %configure
 
 %install
