@@ -1,13 +1,13 @@
 Summary:	AllTray - small program to dock application into the system tray
 Summary(pl):	AllTray - ma³y program do dokowania aplikacji w tacce systemowej
 Name:		alltray
-Version:	0.42
+Version:	0.51
 Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/alltray/%{name}-%{version}.tar.gz
-# Source0-md5:	2646556343a0350b4ede7dbd228c78ee
-Patch0:		%{name}-notitlechange_nomenutitle.patch
+# Source0-md5:	44466a011131c4f132b64722dbdd8ae3
+#Patch0:		%{name}-notitlechange_nomenutitle.patch
 URL:		http://alltray.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -28,7 +28,7 @@ KDE, XFCE 4, Fluxboksem i WindowMakerem.
 
 %prep
 %setup -q
-%patch0 -p1
+#%%patch0 -p1
 
 %build
 %{__aclocal}
