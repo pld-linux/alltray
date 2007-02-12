@@ -1,5 +1,5 @@
 Summary:	AllTray - small program to dock application into the system tray
-Summary(pl):	AllTray - ma³y program do dokowania aplikacji w tacce systemowej
+Summary(pl.UTF-8):   AllTray - maÅ‚y program do dokowania aplikacji w tacce systemowej
 Name:		alltray
 Version:	0.66
 Release:	1
@@ -23,9 +23,9 @@ With AllTray you can dock any application with no native tray icon
 (like Evolution, Thunderbird, Terminals) into the system tray. It
 works well with Gnome, KDE, Xfce 4, Fluxbox and WindowMaker.
 
-%description -l pl
-Dziêki AllTray mo¿na zadokowaæ dowoln± aplikacjê (jak Evolution,
-Thunderbird czy terminal) do tacki systemowej. Dzia³a dobrze z GNOME,
+%description -l pl.UTF-8
+DziÄ™ki AllTray moÅ¼na zadokowaÄ‡ dowolnÄ… aplikacjÄ™ (jak Evolution,
+Thunderbird czy terminal) do tacki systemowej. DziaÅ‚a dobrze z GNOME,
 KDE, Xfce 4, Fluxboksem i WindowMakerem.
 
 %prep
