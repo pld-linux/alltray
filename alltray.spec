@@ -1,12 +1,12 @@
 Summary:	AllTray - small program to dock application into the system tray
 Summary(pl.UTF-8):	AllTray - mały program do dokowania aplikacji w tacce systemowej
 Name:		alltray
-Version:	0.66
+Version:	0.70
 Release:	1
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/alltray/%{name}-%{version}.tar.gz
-# Source0-md5:	78b43bd2e19258b0518af99e21123561
+# Source0-md5:	675a0a60f22fae04da787095ef0bd7d9
 #Patch0:		%{name}-notitlechange_nomenutitle.patch
 URL:		http://alltray.sourceforge.net/
 BuildRequires:	GConf2-devel
@@ -33,9 +33,11 @@ KDE, Xfce 4, Fluxboksem i WindowMakerem.
 #%%patch0 -p1
 
 %build
+%{__libtoolize}
 %{__aclocal}
 %{__automake}
 %{__autoconf}
+
 %configure \
 	--disable-static
 
@@ -47,14 +49,14 @@ rm -rf $RPM_BUILD_ROOT
 
 rm -f $RPM_BUILD_ROOT%{_libdir}/lib*.la
 
-%clean
-rm -rf $RPM_BUILD_ROOT
+#%clean
+#rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog README
 %attr(755,root,root) %{_bindir}/*
-%attr(755,root,root) %{_libdir}/liballtray*.so.*.*
+%attr(755,root,root) %{_libdir}/liballtray*.so*
 %{_mandir}/man1/alltray.1*
 %{_desktopdir}/%{name}.desktop
 %{_pixmapsdir}/*.png
