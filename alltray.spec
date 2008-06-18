@@ -3,11 +3,10 @@ Summary(pl.UTF-8):	AllTray - mały program do dokowania aplikacji w tacce system
 Name:		alltray
 Version:	0.70
 Release:	1
-License:	GPL v2
+License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/alltray/%{name}-%{version}.tar.gz
 # Source0-md5:	675a0a60f22fae04da787095ef0bd7d9
-#Patch0:		%{name}-notitlechange_nomenutitle.patch
 URL:		http://alltray.sourceforge.net/
 BuildRequires:	GConf2-devel
 BuildRequires:	autoconf
@@ -30,7 +29,6 @@ KDE, Xfce 4, Fluxboksem i WindowMakerem.
 
 %prep
 %setup -q
-#%%patch0 -p1
 
 %build
 %{__libtoolize}
@@ -47,16 +45,21 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-rm -f $RPM_BUILD_ROOT%{_libdir}/lib*.la
+# liballtray.so.0.0.0 is explicitly LD_PRELOADed
+rm -f $RPM_BUILD_ROOT%{_libdir}/lib*.{la,so}
 
-#%clean
-#rm -rf $RPM_BUILD_ROOT
+%clean
+rm -rf $RPM_BUILD_ROOT
+
+%post	-p /sbin/ldconfig
+%postun	-p /sbin/ldconfig
 
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog README
-%attr(755,root,root) %{_bindir}/*
-%attr(755,root,root) %{_libdir}/liballtray*.so*
+%attr(755,root,root) %{_bindir}/alltray
+%attr(755,root,root) %{_libdir}/liballtray.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/liballtray.so.0
 %{_mandir}/man1/alltray.1*
 %{_desktopdir}/%{name}.desktop
-%{_pixmapsdir}/*.png
+%{_pixmapsdir}/alltray.png
