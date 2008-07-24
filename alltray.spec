@@ -2,7 +2,7 @@ Summary:	AllTray - small program to dock application into the system tray
 Summary(pl.UTF-8):	AllTray - mały program do dokowania aplikacji w tacce systemowej
 Name:		alltray
 Version:	0.70
-Release:	1
+Release:	2
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/alltray/%{name}-%{version}.tar.gz
