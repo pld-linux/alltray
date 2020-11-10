@@ -5,15 +5,21 @@ Version:	0.70
 Release:	2
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://dl.sourceforge.net/alltray/%{name}-%{version}.tar.gz
+#Source0Download: https://github.com/mbt/alltray/releases
+# dev versions:
+#Source0:	https://github.com/mbt/alltray/archive/v%{version}/%{name}-%{version}.tar.gz
+Source0:	http://downloads.sourceforge.net/alltray/%{name}-%{version}.tar.gz
 # Source0-md5:	675a0a60f22fae04da787095ef0bd7d9
-URL:		http://alltray.sourceforge.net/
-BuildRequires:	GConf2-devel
+Patch0:		%{name}-link.patch
+URL:		https://launchpad.net/alltray
+BuildRequires:	GConf2-devel >= 2.0
 BuildRequires:	autoconf
 BuildRequires:	automake
+BuildRequires:	gdk-pixbuf2-xlib-devel >= 2.0
 BuildRequires:	gtk+2-devel >= 2:2.4.0
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
+BuildRequires:	xorg-lib-libX11-devel
 Requires:	gtk+2 >= 2:2.4.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -29,13 +35,14 @@ KDE, Xfce 4, Fluxboksem i WindowMakerem.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %{__libtoolize}
 %{__aclocal}
-%{__automake}
 %{__autoconf}
-
+%{__autoheader}
+%{__automake}
 %configure \
 	--disable-static
 
@@ -46,7 +53,7 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT
 
 # liballtray.so.0.0.0 is explicitly LD_PRELOADed
-rm -f $RPM_BUILD_ROOT%{_libdir}/lib*.{la,so}
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/lib*.{la,so}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -61,5 +68,5 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/liballtray.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/liballtray.so.0
 %{_mandir}/man1/alltray.1*
-%{_desktopdir}/%{name}.desktop
+%{_desktopdir}/alltray.desktop
 %{_pixmapsdir}/alltray.png

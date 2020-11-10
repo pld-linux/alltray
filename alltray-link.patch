@@ -1,0 +1,9 @@
+--- alltray-0.70/lib/Makefile.am.orig	2006-04-10 19:38:42.000000000 +0200
++++ alltray-0.70/lib/Makefile.am	2020-11-10 21:04:10.053752749 +0100
+@@ -4,5 +4,5 @@
+ 
+ liballtray_la_SOURCES = nomap.c
+ 
+-liballtray_la_LDFLAGS = -version-info 0:0:0 -ldl
++liballtray_la_LDFLAGS = -version-info 0:0:0 -lX11 -ldl
+ liballtray_la_CFLAGS = $(X_CFLAGS)
